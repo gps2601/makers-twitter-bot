@@ -1,5 +1,7 @@
 const makersTwitter = require('./makers-twitter')
 
-console.log('hello')
+var tweets;
 
-makersTwitter.callTwitter()
+makersTwitter.callTwitter();
+
+console.log(tweets);

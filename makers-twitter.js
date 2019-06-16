@@ -1,10 +1,11 @@
 const  Twitter = require('twitter');
 const config = require('./config.js');
+var Tweet = require('./tweet.js');
 
 const T = new Twitter(config);
 
 var params = {
-  q: '#makersacademy',
+  q: '#loveisland',
   count: 10,
   result_type: 'recent',
   lang: 'en'
@@ -12,7 +13,8 @@ var params = {
 
 function handleResponseFromTwitter(err,data,response) {
     if(!err){
-      console.log(data);
+      tweets = data.statuses.map( tweet => new Tweet(tweet.id, tweet.text, tweet.created_at));
+      console.log(tweets)
   } else {
     console.error(err);
   }
